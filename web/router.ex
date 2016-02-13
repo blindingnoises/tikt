@@ -18,6 +18,7 @@ defmodule Tikt.Router do
 
     get "/", PageController, :index
     resources "/organizations", OrganizationController
+    resources "/activities", ActivityController
   end
 
   # Other scopes may use custom stacks.
