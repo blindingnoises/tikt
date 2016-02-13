@@ -1,0 +1,44 @@
+<h2>Listing people</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Nickname</th>
+      <th>Email</th>
+      <th>Password hash</th>
+      <th>Password salt</th>
+      <th>Description</th>
+      <th>Image url</th>
+      <th>Role</th>
+      <th>Active</th>
+      <th>Organization</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for person <- @people do %>
+    <tr>
+      <td><%= person.name %></td>
+      <td><%= person.nickname %></td>
+      <td><%= person.email %></td>
+      <td><%= person.password_hash %></td>
+      <td><%= person.password_salt %></td>
+      <td><%= person.description %></td>
+      <td><%= person.image_url %></td>
+      <td><%= person.role %></td>
+      <td><%= person.active %></td>
+      <td><%= person.organization_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: person_path(@conn, :show, person), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: person_path(@conn, :edit, person), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: person_path(@conn, :delete, person), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New person", to: person_path(@conn, :new) %>

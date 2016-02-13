@@ -1,0 +1,58 @@
+<h2>Show person</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @person.name %>
+  </li>
+
+  <li>
+    <strong>Nickname:</strong>
+    <%= @person.nickname %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @person.email %>
+  </li>
+
+  <li>
+    <strong>Password hash:</strong>
+    <%= @person.password_hash %>
+  </li>
+
+  <li>
+    <strong>Password salt:</strong>
+    <%= @person.password_salt %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @person.description %>
+  </li>
+
+  <li>
+    <strong>Image url:</strong>
+    <%= @person.image_url %>
+  </li>
+
+  <li>
+    <strong>Role:</strong>
+    <%= @person.role %>
+  </li>
+
+  <li>
+    <strong>Active:</strong>
+    <%= @person.active %>
+  </li>
+
+  <li>
+    <strong>Organization:</strong>
+    <%= @person.organization_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: person_path(@conn, :edit, @person) %>
+<%= link "Back", to: person_path(@conn, :index) %>
