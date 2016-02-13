@@ -1,6 +1,7 @@
 defmodule Tikt.Person do
   use Tikt.Web, :model
-
+  import Comeonin.Bcrypt, only: [hashpwsalt: 1]
+  
   schema "people" do
     field :name, :string
     field :nickname, :string
@@ -14,9 +15,13 @@ defmodule Tikt.Person do
     belongs_to :organization, Tikt.Organization
 
     timestamps
+    
+    # UI Virtual fields
+    field :password, :string, virtual: true
+    field :password_confirm, :string, virtual: true
   end
 
-  @required_fields ~w(name nickname email password_hash password_salt description image_url role active)
+  @required_fields ~w(name nickname email password password_confirm description image_url role active)
   @optional_fields ~w()
 
   @doc """
@@ -28,5 +33,16 @@ defmodule Tikt.Person do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> hash_password
   end
+  
+  defp hash_password(changeset) do
+  if password = get_change(changeset, :password) do
+    changeset
+    |> put_change(:password_hash, hashpwsalt(password))
+    |> put_change(:password_salt, "RANDOMSALTVALUE")
+  else
+    changeset
+  end
+end
 end
