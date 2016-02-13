@@ -6,8 +6,6 @@
       <th>Name</th>
       <th>Nickname</th>
       <th>Email</th>
-      <th>Password hash</th>
-      <th>Password salt</th>
       <th>Description</th>
       <th>Image url</th>
       <th>Role</th>
@@ -23,8 +21,6 @@
       <td><%= person.name %></td>
       <td><%= person.nickname %></td>
       <td><%= person.email %></td>
-      <td><%= person.password_hash %></td>
-      <td><%= person.password_salt %></td>
       <td><%= person.description %></td>
       <td><%= person.image_url %></td>
       <td><%= person.role %></td>
